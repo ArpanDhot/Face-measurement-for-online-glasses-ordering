@@ -14,7 +14,7 @@ With the surge in online shopping, especially for glasses, a common issue is the
 
 ## Demo
 
-![Demo GIF](path/to/demo.gif)
+![Demo GIF](Demo/test.gif)
 
 ## Getting Started
 
