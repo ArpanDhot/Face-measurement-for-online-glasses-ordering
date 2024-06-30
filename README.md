@@ -7,7 +7,7 @@ With the surge in online shopping, especially for glasses, a common issue is the
 
 ## Features
 
-- **Real-time Face Landmark Detection**: Utilizes MediaPipe to detect facial landmarks in real-time from a webcam feed.
+- **Real-time Face Landmark Detection**: Utilises MediaPipe to detect facial landmarks in real-time from a webcam feed.
 - **Distance Estimation**: Trains a linear regression model to estimate the distance of the face from the camera using bounding box dimensions.
 - **Dynamic Glasses Overlay**: Draws glasses on the face dynamically scaled based on the detected measurements.
 - **Measurement Display**: Displays real-time measurements of eye width, eye distance, and face width on the screen.
