@@ -26,22 +26,22 @@ With the surge in online shopping, especially for glasses, a common issue is the
 ### Installation
 
 1. Clone the repository:
-    \`\`\`sh
+    ```sh
     git clone https://github.com/yourusername/face-measurement-for-glasses-ordering.git
     cd face-measurement-for-glasses-ordering
-    \`\`\`
+    ```
 
 2. Install the required packages:
-    \`\`\`sh
+    ```sh
     pip install -r requirements.txt
-    \`\`\`
+    ```
 
 ### Usage
 
 1. Run the main script:
-    \`\`\`sh
+    ```sh
     python src/main.py
-    \`\`\`
+    ```
 
 2. The application will start the webcam feed and display real-time measurements and an overlay of glasses on your face.
 
@@ -49,9 +49,9 @@ With the surge in online shopping, especially for glasses, a common issue is the
 
 ### Data Preparation and Model Training
 
-- **Calibration Data**: The dataset used for camera calibration contains bounding box sizes and corresponding distances, which helps train the linear regression model. This model estimates how far the user is from the camera, allowing dynamic scaling of glasses size.
+**Calibration Data**: The dataset used for camera calibration contains bounding box sizes and corresponding distances, which helps train the linear regression model. This model estimates how far the user is from the camera, allowing dynamic scaling of glasses size.
 
-\`\`\`python
+```python
 # Data format: bounding_boxes (array of [height, width]), distances (array of distances)
 bounding_boxes = np.array([
     [135, 114], [200, 185], [113, 104], [185, 154], [360, 270], [280, 220],
@@ -63,19 +63,21 @@ distances = np.array([58, 36, 70, 45, 20, 28, 50, 30, 17, 60, 80, 90, 100, 110, 
 # Train the linear regression model
 model = LinearRegression()
 model.fit(bounding_boxes, distances)
-\`\`\`
+```
 
 ### Real-time Processing
 
-- **Face Landmark Detection**: Uses MediaPipe to detect facial landmarks in real-time.
-- **Distance Estimation**: Applies the trained linear regression model to estimate the distance of the face from the camera.
-- **Measurement Calculation**: Calculates key facial dimensions like eye width, eye distance, and face width, which are crucial for determining the right frame and lens size.
+**Face Landmark Detection**: Uses MediaPipe to detect facial landmarks in real-time.
+
+**Distance Estimation**: Applies the trained linear regression model to estimate the distance of the face from the camera.
+
+**Measurement Calculation**: Calculates key facial dimensions like eye width, eye distance, and face width, which are crucial for determining the right frame and lens size.
 
 ### Dynamic Glasses Overlay
 
-- **Drawing Functions**: Functions to draw the glasses dynamically on the user's face, including dashed lines for measurement indicators.
+**Drawing Functions**: Functions to draw the glasses dynamically on the user's face, including dashed lines for measurement indicators.
 
-\`\`\`python
+```python
 def draw_dashed_line(img, start, end, color, thickness, dash_length=5):
     x1, y1 = start
     x2, y2 = end
@@ -88,7 +90,7 @@ def draw_dashed_line(img, start, end, color, thickness, dash_length=5):
         end_y = int(y1 + (y2 - y1) * ((i + 1) / num_dashes))
         if i % 2 == 0:
             cv2.line(img, (start_x, start_y), (end_x, end_y), color, thickness)
-\`\`\`
+```
 
 ## Contributions
 
